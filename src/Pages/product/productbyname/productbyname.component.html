@@ -1,0 +1,38 @@
+<div class="container">
+    <table class="table" style="width: 500px;">
+        <tbody>
+        <tr>
+            <td>
+                <label>ProductName</label>
+            </td>
+            <td>
+                <input type="text" [(ngModel)]="name" class="form-control">
+            </td>
+            <td>
+                <button class="btn btn-primary" (click)="search()">Search</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <span style="color: red;">{{errMsg}}</span>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+    <hr>
+    <table class="table" *ngIf="isProductExist" border="2">
+        <div class="row mt-2">
+            <div ng-repeat="let product of products" [ngClass]="grid ? 'col-12' : 'col-12'">
+                <!-- <div class="my-2" style="border: 1px solid;">ProductId:{{item.productId}}</div> -->
+                <div class="my-2" style="border: 1px solid;">Product Name:{{product.name}}</div>
+                <div class="my-2" style="border: 1px solid;">Price{{product.price}}</div>
+                <!-- <div class="my-2" style="border: 1px solid;">{{item.available}}</div> -->
+                <!-- <div class="my-2" style="border: 1px solid;">{{item.brandId}}</div> -->
+            </div>
+        </div>
+        
+    </table>
+</div>
+<div *ngIf="!(isProductExist)">No products available</div>
+
+
